@@ -1,0 +1,5 @@
+public static void connection() throws SQLException, ClassNotFoundException{
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        con = DriverManager.getConnection("jdbc:mysql://localhost/lms", "root", "password");
+        //IBACCNFLibrary
+        }
