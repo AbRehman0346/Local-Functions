@@ -1,0 +1,6 @@
+public Calendar addToCurrentDate(int days){
+        Calendar cal = Calendar.getInstance();
+        cal.setTimeZone(TimeZone.getTimeZone("GMT"));
+        cal.add(Calendar.DATE, days);
+        return cal;
+    }
