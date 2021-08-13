@@ -1,0 +1,37 @@
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+class Exam {
+	public static void main(String args[]){
+		JFrame f = new JFrame("Addition");
+		f.setSize(200, 200);
+		
+		JLabel msg = new JLabel("Enter MB Data");
+		msg.setBounds(10, 10, 100, 20);
+		
+		JTextField tf1 = new JTextField();
+		tf1.setBounds(10, 30, 100, 20);
+		
+		JLabel l = new JLabel("Answer: ");
+		l.setBounds(10, 60, 100, 20);
+		
+		JButton b = new JButton("Convert GB");
+		b.setBounds(10, 90, 120, 30);
+		
+		b.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				l.setText("Answer: " + (Float.parseFloat(tf1.getText())/1000));
+			}
+		});
+		
+		f.add(msg);
+		f.add(tf1);
+		f.add(b);
+		f.add(l);
+		
+		f.setLayout(null);
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		f.setVisible(true);
+		
+	}
+}

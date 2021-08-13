@@ -1,0 +1,84 @@
+class Program2{
+	public static void main(String args[]){
+		Number_Into_Words n = new Number_Into_Words();
+		System.out.println(n.change("1029"));
+	}
+}
+class Number_Into_Words{
+	public static String oneToTwenty(String num){
+		String words = "";
+		switch (num){
+			case("1"):{words = "one"; break;}
+			case("2"):{words = "two"; break;}
+			case("3"):{words = "three"; break;}
+			case("4"):{words = "four"; break;}
+			case("5"):{words = "five"; break;}
+			case("6"):{words = "six"; break;}
+			case("7"):{words = "seven"; break;}
+			case("8"):{words = "eight"; break;}
+			case("9"):{words = "nine"; break;}
+			case("10"):{words = "ten"; break;}
+			case("11"):{words = "eleven"; break;}
+			case("12"):{words = "twelve"; break;}
+			case("13"):{words = "threen"; break;}
+			case("14"):{words = "fourteen"; break;}
+			case("15"):{words = "fifteen"; break;}
+			case("16"):{words = "sixteen"; break;}
+			case("17"):{words = "seventeen"; break;}
+			case("18"):{words = "eighteen"; break;}
+			case("19"):{words = "ninteen"; break;}
+			case("20"):{words = "twenty"; break;}
+			
+		}
+		return words;
+	}
+	
+	public static String tens(String number){
+		String words = "";
+		switch (number){
+			case ("2"):{words = "twenty"; break;}
+			case ("3"):{words = "thirty"; break;}
+			case ("4"):{words = "fourty"; break;}
+			case ("5"):{words = "fifty"; break;}
+			case ("6"):{words = "sixty"; break;}
+			case ("7"):{words = "seventy"; break;}
+			case ("8"):{words = "eighty"; break;}
+			case ("9"):{words = "ninty"; break;}
+		}
+		return words;
+	}
+	
+	public static StringBuffer change(String number){
+		StringBuffer words = new StringBuffer();
+		int index = 0;
+		boolean check = false;
+		if (number.length() == 4 || check){
+			if (!(number.charAt(index) == '0'))
+				words.append(" "+oneToTwenty(String.valueOf(number.charAt(index))) + " thousand");
+			index++;
+			check = true;
+		}
+		if (number.length() == 3 || check){
+			if (!(number.charAt(index) == '0'))
+				words.append(" "+oneToTwenty(String.valueOf(number.charAt(index))) + " hundered");
+			index++;
+			check = true;
+		}
+		if (number.length() == 2 || check){
+			check = true;
+			if (number.charAt(index) == '1'){
+				words.append(" "+oneToTwenty(String.valueOf(number.charAt(index))+String.valueOf(number.charAt(++index))));
+				check=false;
+			}
+			if ((!(number.charAt(index) == '0'))&&check)
+				words.append(" "+tens(String.valueOf(number.charAt(index))));
+			index++;
+		}
+		if (number.length() == 1 || check){
+			if (!(number.charAt(index) == '0'))
+				words.append(" "+oneToTwenty(String.valueOf(number.charAt(index))));
+			index++;
+		}
+		return words;
+	}
+}

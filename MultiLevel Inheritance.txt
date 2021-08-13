@@ -1,0 +1,38 @@
+class Program2 extends Divi{
+	public static void main(String args[]){
+		Program2 p = new Program2();
+		int a = 10, b=20;
+		
+		System.out.println(p.add(a,b));
+		
+		System.out.println(p.sub(a,b));
+		
+		p.multiplication();
+		
+		p.division(a, b);
+	}
+}
+class Add{
+	public int add(int a, int b){
+		return a+b;
+	}
+}
+
+class Sub extends Add{
+	public int sub(int a, int b){
+		return a-b;
+	}
+}
+
+class Multi extends Sub{
+	public void multiplication(){
+		int a=10, b=3;
+		System.out.println(a*b);
+	}
+}
+
+class Divi extends Multi{
+	public void division(int a, int b){
+		System.out.println(a +"/"+ b +"= "+ (float)a/b);
+	}
+}

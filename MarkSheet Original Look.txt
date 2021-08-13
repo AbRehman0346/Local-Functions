@@ -1,0 +1,244 @@
+import javax.swing.JOptionPane;
+import java.util.Scanner;
+class Program{
+	public static void main(String args[]){
+		Scanner inputString = new Scanner(System.in);
+		Scanner inputInt = new Scanner(System.in);
+		String seatNo="", group="", district="", year="";
+		String name="", fname="", surname="", dob="",moi="", institute="";
+		String[] subjects = {"English-I", "Sindhi-I", "Pakistan Studies", "Biology Theory", "Biology (PR)", "Chemistry Theory", "Chemistry (PR)"};
+		int[] marks = new int[8];
+		int[] maxMarks = {75, 75, 75, 85, 15, 85, 15};
+		//for (int i=0; i<=7; i++)
+		//	marks[i] = "";
+		//marks[0] = "5";
+		
+		//INPUT PORTION
+		System.out.print("Enter Year: "); year = inputString.nextLine();
+		System.out.print("Enter SEAT NO:"); seatNo = inputString.nextLine();
+		System.out.print("Enter GROUP: "); group = inputString.nextLine();
+		System.out.print("Enter DISTRICT: "); district = inputString.nextLine();
+		
+		System.out.print("Enter Name: "); name = inputString.nextLine();
+		System.out.print("Enter Father's Name: "); fname = inputString.nextLine();
+		System.out.print("Enter SURNAME: "); surname = inputString.nextLine();
+		System.out.print("Enter Date Of Birth: "); dob = inputString.nextLine();
+		System.out.print("Enter M.O.Identification: "); moi = inputString.nextLine();
+		System.out.print("Enter Institute: "); institute = inputString.nextLine();
+		
+		System.out.print("\nEnter Marks Of " + subjects[0] + " (Out of " + maxMarks[0] + "): "); 
+		marks[0] = inputInt.nextInt();
+		System.out.print("Enter Marks Of " + subjects[1] + " (Out of " + maxMarks[1] + "): "); 
+		marks[1] = inputInt.nextInt();
+		System.out.print("Enter Marks Of " + subjects[2] + " (Out of " + maxMarks[2] + "): "); 
+		marks[2] = inputInt.nextInt();
+		System.out.print("Enter Marks Of " + subjects[3] + " (Out of " + maxMarks[3] + "): "); 
+		marks[3] = inputInt.nextInt();
+		System.out.print("Enter Marks Of " + subjects[4] + " (Out of " + maxMarks[4] + "): "); 
+		marks[4] = inputInt.nextInt();
+		System.out.print("Enter Marks Of " + subjects[5] + " (Out of " + maxMarks[5] + "): "); 
+		marks[5] = inputInt.nextInt();
+		System.out.print("Enter Marks Of " + subjects[6] + " (Out of " + maxMarks[6] + "): "); 
+		marks[6] = inputInt.nextInt();
+		// INPUT PORTION END...
+		//Checking if Marking is Correct.
+		boolean terminateProgram = false, space=true;
+		for (int i=0; i<=6; i++){
+			if(marks[i] > maxMarks[i]){
+				try{
+					throw new InvalidMarkingException(subjects[i] + " Marks can't Exceed from " + maxMarks[i]);
+				}catch(InvalidMarkingException e){
+					if (space){
+						System.out.println();
+						space = false;
+					}
+					System.out.println(e);
+					terminateProgram = true;
+				}
+			}
+		}
+		if (terminateProgram)
+			System.exit(0);
+		//Checking End.
+		//Addition
+		for (int i=0; i<8; i++)
+			marks[7] += marks[i];
+		
+		space(30); System.out.println("BOARD OF INTERMEDIATE & SECONDARY EDUCATION SUKKUR, SINDH");
+		space(50); System.out.println("Marks Certificate");
+		space(80); System.out.println("SEAT NO: "+seatNo);
+		space(80); System.out.println("GROUP: "+group);
+		space(80); System.out.println("DISTRICT: "+district);
+		space(30); System.out.println("SECONDARY SCHOOL CERTIFICATE PART-I ANNUAL EXAMINATION "+year);
+		
+		System.out.println();
+		space(20); System.out.println("NAME: "+mSpace(20)+name);
+		space(20); System.out.println("FATHER'S NAME: "+mSpace(11)+fname);
+		space(20); System.out.println("SURNAME: "+mSpace(17)+surname);
+		space(20); System.out.println("DATE OF BIRTH: "+mSpace(11)+dob);
+		space(20); System.out.println("M.O.IDENTIFICATION:  "+mSpace(5)+moi);
+		space(20); System.out.println("INSTITUTE:  "+mSpace(14)+institute);
+		Number_Into_Words ntw = new Number_Into_Words();
+		int[] minMarks = {25,25,25,28,5,28,5};
+		{//MAKING TABLE...
+			space(20);System.out.println("___________________________________________________________________");
+			space(20);System.out.println("|                    |           |           |          |          |");
+			space(20);System.out.println("| Subjects           | MAX.MARKS | MIN.MARKS |OBT.MARKS | REMARKS  |");
+			space(20);System.out.println("|____________________|___________|___________|__________|__________|");
+			space(20);System.out.println("|                    |           |           |          |          |");
+			space(20);System.out.println("| " + cover(subjects[0], 19) + "|    75     |    25     |    "+cover(marks[0], 6)+"|   "+cover((((marks[0] < minMarks[0])? "Fail" :"")), 7)+"|");
+			space(20);System.out.println("|____________________|___________|___________|__________|__________|");
+			space(20);System.out.println("|                    |           |           |          |          |");
+			space(20);System.out.println("| " + cover(subjects[1], 19) + "|    75     |    25     |    "+cover(marks[1], 6)+"|   "+cover((((marks[1] < minMarks[1])? "Fail" :"")), 7)+"|");
+			space(20);System.out.println("|____________________|___________|___________|__________|__________|");
+			space(20);System.out.println("|                    |           |           |          |          |");
+			space(20);System.out.println("| " + cover(subjects[2], 19) + "|    75     |    25     |    "+cover(marks[2], 6)+"|   "+cover((((marks[2] < minMarks[2])? "Fail" :"")), 7)+"|");
+			space(20);System.out.println("|____________________|___________|___________|__________|__________|");
+			space(20);System.out.println("|                    |           |           |          |          |");
+			space(20);System.out.println("| " + cover(subjects[3], 19) + "|    85     |    28     |    "+cover(marks[3], 6)+"|   "+cover((((marks[3] < minMarks[3])? "Fail" :"")), 7)+"|");
+			space(20);System.out.println("|____________________|___________|___________|__________|__________|");
+			space(20);System.out.println("|                    |           |           |          |          |");
+			space(20);System.out.println("| " + cover(subjects[4], 19) + "|    15     |    5      |    "+cover(marks[4], 6)+"|   "+cover((((marks[4] < minMarks[4])? "Fail" :"")), 7)+"|");
+			space(20);System.out.println("|____________________|___________|___________|__________|__________|");
+			space(20);System.out.println("|                    |           |           |          |          |");
+			space(20);System.out.println("| " + cover(subjects[5], 19) + "|    85     |    28     |    "+cover(marks[5], 6)+"|   "+cover((((marks[5] < minMarks[5])? "Fail" :"")), 7)+"|");
+			space(20);System.out.println("|____________________|___________|___________|__________|__________|");
+			space(20);System.out.println("|                    |           |           |          |          |");
+			space(20);System.out.println("| " + cover(subjects[6], 19) + "|    15     |    5      |    "+cover(marks[6], 6)+"|   "+cover((((marks[6] < minMarks[6])? "Fail" :"")), 7)+"|");
+			space(20);System.out.println("|____________________|___________|___________|__________|__________|");
+			space(20);System.out.println("|                    |           |           |          |          |");
+			space(20);System.out.println("| TOTAL              |   425     |    --     |    "+cover(marks[7], 6)+"|          |");
+			space(20);System.out.println("|____________________|___________|___________|__________|__________|");
+			space(20);System.out.println("|                                                                  |");
+			space(20);System.out.println("| MARKS IN WORDS:"+cover(ntw.change(String.valueOf(marks[7])).toString(), 50)+"|");
+			space(20);System.out.println("|__________________________________________________________________|");
+		}
+		System.out.println();
+		int resultSubjectWise=0;
+		for (int i=0; i<=6; i++){
+			if (i==4 || i==6)
+				continue;
+			if (marks[i] >= minMarks[i])
+				resultSubjectWise++;
+		}
+		
+		
+		String result = (marks[7] < 300) ? "Fail" : "Pass";
+		space(20);System.out.println("RESULT: Pass " + resultSubjectWise + " Subjects");
+		space(20);System.out.println("REMARKS: " + result);
+		space(20);System.out.println("\n\n\n");
+		space(20);System.out.println("Certificate No: 14SSCI - 062375"+"\t"+"Prepared By"+"\t"+"Checked By"+"\t"+"CONTROLLER OF EXAMINATIONS");
+		
+		
+	}
+	public static void space(int spaces){
+		for (int i=1; i<=spaces; i++)
+			System.out.print(" ");
+	}
+	public static String mSpace(int spaces){
+		String storedSpaces="";
+		for (int i=1; i<=spaces; i++)
+			storedSpaces += " ";
+		return storedSpaces;
+	}
+	
+	public static StringBuffer cover(String data, int space){
+		StringBuffer value = new  StringBuffer(data);
+		for (int i=1; i<= space-data.length(); i++)
+			value.append(" ");
+		return value;
+	}
+	public static StringBuffer cover(int data, int space){
+		StringBuffer value = new StringBuffer(String.valueOf(data));
+		for (int i=1; i<=space-(String.valueOf(data)).length(); i++)
+			value.append(" ");
+		return value;
+	}
+	
+	
+}
+
+class Number_Into_Words{
+	public static String oneToTwenty(String num){
+		String words = "";
+		switch (num){
+			case("1"):{words = "one"; break;}
+			case("2"):{words = "two"; break;}
+			case("3"):{words = "three"; break;}
+			case("4"):{words = "four"; break;}
+			case("5"):{words = "five"; break;}
+			case("6"):{words = "six"; break;}
+			case("7"):{words = "seven"; break;}
+			case("8"):{words = "eight"; break;}
+			case("9"):{words = "nine"; break;}
+			case("10"):{words = "ten"; break;}
+			case("11"):{words = "eleven"; break;}
+			case("12"):{words = "twelve"; break;}
+			case("13"):{words = "threen"; break;}
+			case("14"):{words = "fourteen"; break;}
+			case("15"):{words = "fifteen"; break;}
+			case("16"):{words = "sixteen"; break;}
+			case("17"):{words = "seventeen"; break;}
+			case("18"):{words = "eighteen"; break;}
+			case("19"):{words = "ninteen"; break;}
+			case("20"):{words = "twenty"; break;}
+			
+		}
+		return words;
+	}
+	
+	public static String tens(String number){
+		String words = "";
+		switch (number){
+			case ("2"):{words = "twenty"; break;}
+			case ("3"):{words = "thirty"; break;}
+			case ("4"):{words = "fourty"; break;}
+			case ("5"):{words = "fifty"; break;}
+			case ("6"):{words = "sixty"; break;}
+			case ("7"):{words = "seventy"; break;}
+			case ("8"):{words = "eighty"; break;}
+			case ("9"):{words = "ninty"; break;}
+		}
+		return words;
+	}
+	
+	public static StringBuffer change(String number){
+		StringBuffer words = new StringBuffer();
+		int index = 0;
+		boolean check = false;
+		if (number.length() == 4 || check){
+			if (!(number.charAt(index) == '0'))
+				words.append(" "+oneToTwenty(String.valueOf(number.charAt(index))) + " thousand");
+			index++;
+			check = true;
+		}
+		if (number.length() == 3 || check){
+			if (!(number.charAt(index) == '0'))
+				words.append(" "+oneToTwenty(String.valueOf(number.charAt(index))) + " hundered");
+			index++;
+			check = true;
+		}
+		if (number.length() == 2 || check){
+			check = true;
+			if (number.charAt(index) == '1'){
+				words.append(" "+oneToTwenty(String.valueOf(number.charAt(index))+String.valueOf(number.charAt(++index))));
+				check=false;
+			}
+			if ((!(number.charAt(index) == '0'))&&check)
+				words.append(" "+tens(String.valueOf(number.charAt(index))));
+			index++;
+		}
+		if (number.length() == 1 || check){
+			if (!(number.charAt(index) == '0'))
+				words.append(" "+oneToTwenty(String.valueOf(number.charAt(index))));
+			index++;
+		}
+		return words;
+	}
+}
+
+class InvalidMarkingException extends Exception{
+	InvalidMarkingException(String msg){
+		super(msg);
+	}
+}

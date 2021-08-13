@@ -1,0 +1,44 @@
+try {
+            GUITest.connection();
+            ps = GUITest.con.prepareStatement("SELECT * FROM STUDENT_DATA");
+            ResultSet rs = ps.executeQuery();
+            java.sql.ResultSetMetaData rsMataData = rs.getMetaData();
+            
+            int count = rsMataData.getColumnCount();
+            
+            for (int i=1; i<=count; i++){
+                System.out.println(i + "\t\t" + rsMataData.getColumnName(i) + " " + rsMataData.getColumnTypeName(i) + (
+                        rsMataData.getColumnTypeName(i).equals("VARCHAR") ? "(" + rsMataData.getColumnDisplaySize(i) + ")" : ""
+                    ) + ";");
+            }
+            
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(JFrameGUITest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+____________________________________________________________________________________________
+
+//To get the information about the primary key or keys of a table.
+
+try {
+            GUITest.connection();
+            ps = GUITest.con.prepareStatement("SELECT * FROM issue_book");
+            ResultSet resultSet = ps.executeQuery();
+            java.sql.ResultSetMetaData rsMataData = resultSet.getMetaData();
+
+            java.sql.DatabaseMetaData databaseMataData = GUITest.con.getMetaData();
+
+            ResultSet rs = databaseMataData.getPrimaryKeys(rsMataData.getCatalogName(1), null, rsMataData.getTableName(1));
+
+            while (rs.next()) {
+                System.out.println("Table name: " + rs.getString("TABLE_NAME"));
+                System.out.println("Column name: " + rs.getString("COLUMN_NAME"));
+                System.out.println("Catalog name: " + rs.getString("TABLE_CAT"));
+                System.out.println("Primary key sequence: " + rs.getString("KEY_SEQ"));
+                System.out.println("Primary key name: " + rs.getString("PK_NAME"));
+                System.out.println(" ");
+            }
+
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(JFrameGUITest.class.getName()).log(Level.SEVERE, null, ex);
+        }

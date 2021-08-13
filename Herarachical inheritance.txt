@@ -1,0 +1,26 @@
+class Test extends Animal{
+	public static void main(String args[]){
+		Food f = new Food();
+		f.dog();
+		f.eat();
+		
+		Test t = new Test();
+		t.cat();
+	}
+}
+
+class Food extends Animal{
+	public void eat(){
+		System.out.println("Eating...");
+	}
+}
+
+class Animal{
+	public void dog(){
+		System.out.print("DOG ");
+	}
+	
+	public void cat(){
+		System.out.println("CAT Eating...");
+	}
+}

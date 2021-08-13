@@ -1,0 +1,32 @@
+import java.util.Scanner;
+class Test{
+	public static void main(String args[]){
+		Scanner inputInt = new Scanner(System.in);
+		System.out.print("Enter First Value: ");
+		int firstValue = inputInt.nextInt();
+		System.out.print("Enter Second Value: ");
+		int secondValue = inputInt.nextInt();
+		if (firstValue >= secondValue)
+			System.out.println("P: " + p(firstValue, secondValue));
+		else
+			System.out.println("Not Defined. Second value can't exceed the first valule");
+	}
+	public static int p(int a, int b){
+		int ans=1;
+		b = a - b;
+		if (b != 0)
+			for (int i=a; i>b; i--)
+			ans *= i;
+		else 
+			ans = factorial(a);
+		return ans;
+	}
+	
+	public static int factorial(int fact){
+		int ans = 1;
+		for (int i=fact; i>=1; i--){
+			ans *= i;
+		}
+		return ans;
+	}
+}

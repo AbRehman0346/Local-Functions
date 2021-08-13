@@ -1,0 +1,106 @@
+import javax.swing.JFrame;
+import java.awt.Color;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import java.awt.Font;
+import java.util.Timer;
+import javax.swing.JOptionPane;
+import java.util.Calendar;
+import java.text.SimpleDateFormat;
+class Program extends JFrame{
+	public static void main(String args[]) throws InterruptedException{
+		int[] calTime = {0, 0, 0};
+		int[] calDate = {0, 0, 0};
+		int hour = 24;
+		int[] month = {32, 30, 32, 31, 32, 31, 32, 32, 31, 32, 31, 32};
+		Program pro = new Program();
+		pro.setBounds(1100, 25, 425, 130);
+		pro.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		Calendar cal = Calendar.getInstance();
+		SimpleDateFormat computerTime = new SimpleDateFormat("hh:mm:ss");
+		SimpleDateFormat computerDate = new SimpleDateFormat("dd-MM-yyyy");
+		String cDate = computerDate.format(cal.getTime()) + "";
+		String ctime = computerTime.format(cal.getTime()) + "";
+		System.out.println("Date is " + cDate);
+		
+		//Setting the Time And Date...
+		//Time
+		calTime[2] = Integer.parseInt(ctime.substring(6));
+		calTime[1] = Integer.parseInt(ctime.substring(3, 5));
+		calTime[0] = Integer.parseInt(ctime.substring(0, 2));
+		
+		//Date
+		calDate[0] = Integer.parseInt(cDate.substring(6));
+		calDate[1] = Integer.parseInt(cDate.substring(3, 5));
+		calDate[2] = Integer.parseInt(cDate.substring(0, 2));
+		//Setting end...
+		
+		//Defining Panel;
+		JPanel mp = new JPanel();
+		mp.setBackground(Color.DARK_GRAY);
+		mp.setLayout(null);
+		
+		//Defining Second Panel;
+		JPanel p = new JPanel();
+		p.setBackground(Color.GREEN);
+		p.setBounds(5, 5, 400, 80);
+		p.setLayout(null);
+		
+		//Defining Label FOR TIME...
+		JLabel lblTime = new JLabel();
+		lblTime.setFont(new Font("Courier", Font.BOLD, 40));
+		lblTime.setBounds(130, 10, 200, 35);
+		
+		//DEFINING LABEL FOR DATE...
+		JLabel lblDate = new JLabel();
+		lblDate.setBounds(150, 50, 200, 20);
+		lblDate.setFont(new Font("Courier", Font.BOLD, 20));
+		//DEFINING LABEL END...
+		
+		p.add(lblTime);
+		p.add(lblDate);
+		mp.add(p);
+		pro.add(mp);
+		//pro.pack();
+		pro.setVisible(true);
+		
+		short count = 0;
+		Thread t = Thread.currentThread();
+		
+		//Calculating Time and Date.
+		while (true){
+			t.sleep(1000);
+			calTime[2]++;
+			if (calTime[2] == 60){
+				calTime[2] = 0;
+				calTime[1]++;
+				
+				if (calTime[1] == 60){
+					calTime[1] = 0;
+					calTime[0]++;
+					
+					if (calTime[0] == hour){
+						calTime[0] = 0;
+						calDate[2]++;
+						
+						if (calDate[2] == month[calDate[1]-1]){
+							calDate[2] = 1;
+							calDate[1]++;
+							
+							if (calDate[1] == 13){
+								calDate[1] = 1;
+								calDate[0]++;
+							}
+						}
+					}
+				}
+			}
+			lblTime.setText(calTime[0] + ":" + calTime[1] + ":" + calTime[2]);
+			lblDate.setText(calDate[2] + ":" + calDate[1] + ":" + calDate[0]);
+		}
+		//Calcuating Time and Date End.
+		
+		
+	}
+}

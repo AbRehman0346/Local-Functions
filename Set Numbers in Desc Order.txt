@@ -1,0 +1,34 @@
+class Test{
+	public static void main(String args[]){
+		int[] arr = {2, 4, 5, 3, 8, 7, 9, 6, 1};
+		desc(arr, 0);
+	}
+	public static void desc(int[] arr, int index){
+		int count=0, max=0;
+		for (int a : arr)
+			count++;
+		int[] sarr = new int[count];
+		int noOfI=0;
+		for (int i=0; i<count; i++){
+			if (arr[i] > max){
+				max = arr[i];
+				noOfI = i;
+			}
+		}
+		System.out.print(max + "  ");
+//		sarr[index] = max;
+		arr[noOfI] = 0;
+		
+//		index++;
+		
+		int breakCount=0;
+		for (int i=0; i<count; i++){
+			if (arr[i] == 0)
+				breakCount++;
+		}
+		if (breakCount == count)
+			System.out.println("Done");
+		else
+			desc(arr, index);
+	}
+}

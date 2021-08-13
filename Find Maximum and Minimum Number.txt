@@ -1,0 +1,18 @@
+class Program{
+	public static void main(String args[]){
+		int[] a = {500, 480, 187, 1456, 234, 586, 548};
+		m(a);
+	}
+	public static void m(int a[]){
+		int max = 0;
+		int min = a[0];
+		for (int num : a){
+			if (num > max)
+				max = num;
+			if (num < min)
+				min = num;
+		}
+		System.out.println("Maximum Number is: " + max);
+		System.out.println("Minimum Number is: " + min);
+	}
+}

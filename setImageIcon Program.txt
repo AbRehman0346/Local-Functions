@@ -1,0 +1,5 @@
+public static ImageIcon setImage(String imgPath, int width, int height){
+        ImageIcon ic = new ImageIcon(imgPath);
+        Image img = ic.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        return new ImageIcon(img);
+    }

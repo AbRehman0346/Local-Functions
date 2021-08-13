@@ -1,0 +1,27 @@
+
+class Program2{
+	public static void main(String args[]){
+		Scanner inputInt = new Scanner(System.in);
+		System.out.print("Enter Number: ");
+		int num = inputInt.nextInt();
+		System.out.println("Addition is: " + new poli().sum(num, "sum"));
+		System.out.println("Multiplication is: " + new poli().sum("multi", num));
+	}
+}
+class poli{
+	public int sum(int number, String operator){
+		int returnValue = 0;
+		for (int i=1; i<=number; i++)
+			returnValue += i;
+		return returnValue;
+	}
+	
+	public long sum(String operator, int number){
+		long returnValue = 1;
+		for (int i=1; i<=number; i++)
+			returnValue *= i;
+		return returnValue;
+	}
+}
+
+//using polimorphism.. find out the sum of natural numbers..

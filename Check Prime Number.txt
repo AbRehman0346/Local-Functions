@@ -1,0 +1,17 @@
+import java.util.Scanner;
+class Hi{
+	public static void main(String args[]){
+		Scanner inputInt = new Scanner(System.in);
+		System.out.print("Enter Number: ");
+		int n=inputInt.nextInt();
+		
+		boolean count  = true;
+		for (int i=2; i<n; i++)
+			if (n%i == 0)
+				count = false;
+		if (count)
+				System.out.println("Number " + n + " is Prime...");
+		else
+			System.out.println("Number " + n + " is not Prime...");
+	}
+}

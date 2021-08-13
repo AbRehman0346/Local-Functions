@@ -1,0 +1,25 @@
+import java.util.Scanner;
+class Program{
+	public static void main(String args[]){
+		factor();
+	}
+	public static void factor(){
+		Scanner inputInt = new Scanner(System.in);
+		System.out.print("Enter Number: ");
+		int num = inputInt.nextInt();
+		for (int i=2; i<=num; i++){
+			if (num%i == 0){
+				System.out.println(i + "\t" + num);
+				num /= i;
+				i--;
+			}
+		}
+		
+		Scanner inputChar = new Scanner(System.in);
+		System.out.print("Do you want to run the program again? (Y/N) ");
+		char again = inputChar.next().charAt(0);
+		if (again == 'Y' || again == 'y')
+			factor();
+		
+	}
+}

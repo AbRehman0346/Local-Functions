@@ -1,0 +1,13 @@
+class Program{
+	public static void main(String args[]) {
+        	int number = 13;
+  	      String binaryValue = "";
+  	      while (number != 1){
+  	          binaryValue += number % 2;
+  	          number = number / 2;
+  	      }
+  	      binaryValue += number;
+  	      StringBuilder sb = new StringBuilder(binaryValue);
+  	      System.out.println(sb.reverse());
+    }
+}

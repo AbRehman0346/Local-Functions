@@ -1,0 +1,13 @@
+public static String focusLostLogic(String txtFieldString, String hint) {
+        if (txtFieldString.equals("")) {
+            txtFieldString = hint;
+        }
+        return txtFieldString;
+    }
+
+    public static String focusGainedLogic(String txtFieldString, String hint) {
+        if (txtFieldString.equals(hint)) {
+            txtFieldString = "";
+        }
+        return txtFieldString;
+    }

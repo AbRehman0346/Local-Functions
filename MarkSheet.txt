@@ -1,0 +1,76 @@
+import java.util.Scanner;
+class Program{
+	public static void main(String args[]){
+		int caps, oop, islamiat, aPhysics, calculus, totalMarks=500;
+		float percentage, obtMarks;
+		Scanner input = new Scanner(System.in);
+		boolean check = false;
+				
+		do{
+			if(check){
+				System.out.println("\"Error\"Marks must be less than 100");						
+				check = false;
+			}
+			System.out.print("Enter Obtained Marks for CAPS\n=>");
+			caps = input.nextInt();	
+			check = caps > 100;
+		}while(check);					
+			
+		do{
+			if(check){
+				System.out.println("\"Error\"Marks must be less than 100");						
+				check = false;
+			}
+			System.out.print("\nEnter Obtained Marks for OOP\n=>");
+			oop = input.nextInt();
+			check = oop > 100;
+		}while(check);		
+
+		do{
+			if(check){
+				System.out.println("\"Error\"Marks must be less than 100");						
+				check = false;
+			}
+			System.out.print("\nEnter Obtained Marks for Islamiat\n=>");
+			islamiat = input.nextInt();
+			check = islamiat > 100;
+		}while(check);		
+
+		do{
+			if(check){
+				System.out.println("\"Error\"Marks must be less than 100");						
+				check = false;
+			}
+			System.out.print("\nEnter Obtained Marks for Applied Physics\n=>");
+			aPhysics = input.nextInt();
+			check = aPhysics > 100;
+		}while(check);		
+
+		do{
+			if(check){
+				System.out.println("\"Error\"Marks must be less than 100");						
+				check = false;
+			}
+			System.out.print("\nEnter Obtained Marks for Calculus\n=>");
+			calculus = input.nextInt();
+			check = calculus > 100;
+		}while(check);			
+		
+		obtMarks = caps + oop + islamiat + calculus + aPhysics;
+		System.out.println("\nObtained Marks: " + obtMarks);
+			
+		percentage = (float) ((obtMarks / totalMarks) * 100);
+		System.out.println("Percentage is " + percentage);
+		
+		if (percentage >= 90 && percentage <= 100)
+			System.out.println("Grade: A");
+		else if (percentage >= 80 && percentage <= 89)
+			System.out.println("Grade: B");
+		else if (percentage >= 70 && percentage <= 79)
+			System.out.println("Grade: C");
+		else if (percentage >= 60 && percentage <= 69)
+			System.out.println("Grade: D");
+		else if (percentage <= 69)
+			System.out.println("You're Fail");						
+	}
+}

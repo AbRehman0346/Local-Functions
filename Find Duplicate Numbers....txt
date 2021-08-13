@@ -1,0 +1,38 @@
+class Program{
+	static boolean check = true;
+	public static void main(String args[]){
+		int[] a = {2, 3, 4, 3, 6, 3, 4, 3, 6, 7, 6};
+		findRepeated(a);
+		if (check)
+			System.out.println("There is no any Repetation...");
+	}
+	
+	public static void findRepeated(int[] a){
+		int range=0;
+		for (int i : a){
+			range++;
+		}
+		for (int i : a){
+			int count = 0;
+			for (int j : a){
+				if (i == j){
+					count++;
+				}
+			}
+			if (count > 1){
+				System.out.println(i + " is repeated " + count + "times");
+				check = false;
+				int[] newA = new int[range-count];
+				int indexOfNewA=0;
+				for (int k : a){
+					if (k != i){
+						newA[indexOfNewA] = k;
+						indexOfNewA++;
+					}
+				}
+				findRepeated(newA);
+				break;
+			}
+		}
+	}
+}

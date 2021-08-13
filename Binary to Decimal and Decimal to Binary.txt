@@ -1,0 +1,49 @@
+import java.util.Scanner;
+class Program{
+	public static void main(String args[]){
+		Scanner input = new Scanner(System.in);
+		System.out.println("Enter Number");
+		System.out.println("1. Binary To Decimal");
+		System.out.println("2. Decimal To Binary");
+		int i = input.nextInt();
+		System.out.print("Enter Value: ");
+		if (i == 1){
+			Scanner inp = new Scanner(System.in);
+			String in = inp.nextLine();
+			BinaryToDecimal(String.valueOf(in));
+		}
+		else if (i == 2){
+			
+			int in = input.nextInt();
+			DecimalToBinary(in);
+		}
+		else
+			System.out.println("Wrong Input.. Run Program Again.");
+	}
+
+	public static void BinaryToDecimal(String binaryValue){	
+		int value = 0;
+		int power = 0;
+		for (int i=binaryValue.length()-1; i>=0; i--){
+			power += power;
+			if (power == 0) {power++;}
+			if (binaryValue.charAt(i) == '1'){
+				value += power;
+			}
+		}
+		System.out.println(value);
+		
+	}
+
+	public static void DecimalToBinary(int number){
+  	      String binaryValue = "";
+  	      while (number != 1){
+  	          binaryValue += number % 2;
+  	          number = number / 2;
+  	      }
+  	      binaryValue += number;
+  	      StringBuilder sb = new StringBuilder(binaryValue);
+  	      System.out.println(sb.reverse());
+
+	}
+}

@@ -1,0 +1,64 @@
+import java.util.Scanner;
+class Program{
+	static int[] sarr;
+	public static void main(String args[]){
+		
+		int count=0;
+		int[] arr = {2, 4, 5, 3, 8, 7, 9, 6, 1};
+		for (int a : arr)
+			count++;
+		sarr = new int[count];
+		System.out.println(find(desc(arr, 0), count));
+		
+	}
+	public static int[] desc(int[] arr, int index){
+		int count=0, max=0;
+		for (int a : arr)
+			count++;
+		
+		int noOfI=0;
+		for (int i=0; i<count; i++){
+			if (arr[i] > max){
+				max = arr[i];
+				noOfI = i;
+			}
+		}
+		sarr[index] = max;
+		arr[noOfI] = 0;
+		
+		index++;
+		
+		int breakCount=0;
+		for (int i=0; i<count; i++){
+			if (arr[i] == 0)
+				breakCount++;
+		}
+		
+		if (breakCount == count)
+			return sarr;
+		else
+			desc(arr, index);
+		return sarr;
+	}
+	public static int find(int a[], int totalNumbers){
+		int returnValue=0;
+		Scanner inputChar = new Scanner(System.in);
+		System.out.print("Want to find the Lowest or Highest (L/H): ");
+		char c = inputChar.next().charAt(0);
+		
+		Scanner inputInt = new Scanner(System.in);
+		System.out.print("Enter Level of Number you want to find: ");
+		int level = inputInt.nextInt();
+		
+		if (c == 'L' || c == 'l'){
+			returnValue = a[totalNumbers - level];
+		}
+		else if (c == 'H' || c == 'h'){
+			returnValue = a[level - 1];
+		} 
+		else
+			System.out.println("Wrong Input!!!");
+		
+		return returnValue;
+	}
+}

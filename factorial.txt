@@ -1,0 +1,11 @@
+//This is a factorial Program.....
+class Program{
+	public static void main(String args[]) {
+		int factorial = 5;
+		int value = 1;
+		for (int i=factorial; i >= 1; i--)
+			value = i * value;
+		System.out.println("factorial of " + factorial + " is: " + value);
+		
+    }
+}

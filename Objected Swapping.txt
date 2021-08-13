@@ -1,0 +1,22 @@
+import java.util.Scanner;
+class Test{
+	public static void main(String args[]){
+		new simple();
+	} 
+}
+class simple{
+	simple(){
+		Scanner input = new Scanner(System.in);
+		int a, b;
+		System.out.print("Enter the Value of A \n=>");
+		a = input.nextInt();
+		System.out.print("Enter the Value of B\n->");
+		b = input.nextInt();
+		a = a + b;
+		b = a - b;
+		a = a - b;
+		System.out.println("After Swaping");
+		System.out.println("Value of A: " + a);
+		System.out.println("Value of B: " + b);
+	}
+}
